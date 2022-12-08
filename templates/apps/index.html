@@ -1,0 +1,127 @@
+{% extends 'apps/parts/layout.html' %}
+{% block body_content %}
+    {% load static %}
+
+    <div class="overlayer" id="overlayer">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+    <a href="#" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+
+    <header class="header-section">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <img src="{% static 'apps/assets/images/logo/logo.png' %}" alt="logo">
+                </div>
+                <ul class="menu">
+                    <li class="d-sm-none text-center">
+                        <a href="{% url 'signin_view' %}" class="header-button active">Login</a>
+                    </li>
+                    <li class="d-sm-none text-center">
+                        <a href="{% url 'signup_view' %}" class="mb-4 header-button">Register</a>
+                    </li>
+                </ul>
+                <div class="header-bar d-lg-none mr-sm-3">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="header-right">
+                    {% if user.is_authenticated %}
+                        <i class="bi bi-person-circle"></i>
+                        <a href="{% url 'logout_view' %}" class="header-button d-none d-sm-inline-block m-0">Logout</a>
+                    {% else %}
+                        <a href="{% url 'signin_view' %}" class="header-button d-none d-sm-inline-block m-0">Login</a>
+                        <a href="{% url 'signup_view' %}"
+                           class="header-button d-none d-sm-inline-block m-0">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="banner-section">
+        <div class="banner-bg bg_img" data-background="{% static 'apps/assets/images/banner/banner-bg.jpg' %}">
+            <div class="banner-bg-shape">
+                <img src="{% static 'apps/assets/images/banner/banner-shape.png' %}" alt="banner">
+            </div>
+            <div class="round-1">
+                <img src="{% static 'apps/assets/images/banner/01.png' %}" alt="banner">
+            </div>
+            <div class="round-2">
+                <img src="{% static 'apps/assets/images/banner/02.png' %}" alt="banner">
+            </div>
+        </div>
+        <div class="container">
+            <div class="banner-content">
+                <h3 class="cate">SHORTEN URLS AND</h3>
+                <h1 class="title">Earn Money</h1>
+                <p>Transforming long, ugly links into Shorten URLs and earn big money. Get paid by every person who
+                    visits
+                    your URLs.</p>
+            </div>
+
+            <div class="banner-form-group">
+                <h3 class="subtitle">Shorten URL Is Just Simple</h3>
+                <form class="banner-form" action="{% url 'form_view' %}" method="post">
+                    {% csrf_token %}
+                    <input type="url" placeholder="Your URL here" name="long_name" required>
+                    <button type="submit">Shorten <i class="flaticon-startup"></i></button>
+                </form>
+                <h5 class="subtitle" style="color: #4eff4e;">{{ short_name }}</h5>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section padding-top padding-bottom pt-md-half pb-max-lg-0">
+        <div class="container">
+            <div class="section-header mb-low">
+                <h2 class="title mb-0">How to start</h2>
+            </div>
+            <div class="row justify-content-center mb--40">
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="how-item">
+                        <div class="how-thumb">
+                            <img src="{% static 'apps/assets/images/how/how1.png' %}" alt="how">
+                        </div>
+                        <div class="how-content">
+                            <h6 class="title">CREATE AN ACCOUNT</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="how-item">
+                        <div class="how-thumb">
+                            <img src="{% static 'apps/assets/images/how/how2.png' %}" alt="how">
+                        </div>
+                        <div class="how-content">
+                            <h6 class="title">SHORTEN YOUR LINK</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="how-item">
+                        <div class="how-thumb">
+                            <img src="{% static 'apps/assets/images/how/how3.png' %}" alt="how">
+                        </div>
+                        <div class="how-content">
+                            <h6 class="title">Earn Money</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section padding-top">
+        <div class="footer-bg bg_img" data-background="{% static 'apps/assets/images/footer/footer-bg.jpg' %}"></div>
+        <div class="footer-bg d-md-block d-none">
+            <img src="{% static 'apps/assets/images/footer/wave.png' %}" alt="footer">
+        </div>
+    </footer>
+{% endblock %}

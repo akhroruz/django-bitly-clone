@@ -1,0 +1,57 @@
+{% extends 'apps/parts/layout.html' %}
+{% block body_content %}
+{% load static %}
+    <div class="overlayer" id="overlayer">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+    <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+
+    <div class="account-section bg_img" data-background="{% static 'apps/assets/images/account-bg.jpg' %}">
+        <div class="container">
+            <div class="account-title text-center">
+                <a href="{% url 'form_view' %}" class="back-home">
+                    <i class="fas fa-angle-left"></i>
+                    <span>Back<span class="d-none d-sm-inline-block">To Cortaly</span></span>
+                </a>
+                <a href="{% url 'form_view' %}" class="logo">
+                    <img src="{% static 'apps/assets/images/logo/logo.png' %}" alt="logo">
+                </a>
+            </div>
+            {% if form.errors %}
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <div class="fieldWrapper" style="color: red;">
+                                    {{ field.label_tag }}
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+            <div class="account-wrapper">
+                <div class="account-body">
+                    <h4 class="title mb-20">Welcome To Cortaly</h4>
+                    <form class="account-form" action="{% url 'signin_view' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="sign-up">Username </label>
+                            <input type="text" placeholder="Username" id="sign-up" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Password</label>
+                            <input type="password" placeholder="Enter Your Password" id="pass" name="password">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="mt-2 mb-2">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="account-header pb-0">
+                    <span class="d-block mt-15">Don't have an account? <a href="{% url 'signup_view' %}">Sign Up Here</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

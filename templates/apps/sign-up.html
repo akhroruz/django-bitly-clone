@@ -1,0 +1,106 @@
+{% extends 'apps/parts/layout.html' %}
+{% block body_content %}
+    {% load static %}
+    <div class="overlayer" id="overlayer">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+    <a href="#0" class="scrollToTop">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <div class="overlay"></div>
+    <div class="account-section bg_img" data-background="{% static 'apps/assets/images/account-bg.jpg' %}">
+        <div class="container">
+            <div class="account-title text-center">
+                <a href="{% url 'form_view' %}" class="back-home">
+                    <i class="fas fa-angle-left"></i>
+                    <span>Back<span class="d-none d-sm-inline-block">To Cortaly</span></span>
+                </a>
+                <a href="{% url 'form_view' %}" class="logo">
+                    <img src="{% static 'apps/assets/images/logo/logo.png' %}" alt="logo">
+                </a>
+            </div>
+            <div class="account-wrapper">
+                <div class="account-body">
+                    <span class="d-block mb-20">Let's get started</span>
+
+                    <form class="account-form" method="post" action="{% url 'signup_view' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="sign-up">Username</label>
+                            <input type="text" placeholder="Enter Username" id="sign-up" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="sign-up">Your Email </label>
+                            <input type="email" placeholder="Enter Your Email " id="sign-up" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="sign-up">Phone number</label>
+                            <input type="text" placeholder="Enter Your Phone number " id="sign-up" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sign-up">Password</label>
+                            <input type="password" placeholder=Password" id="sign-up" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="sign-up">Confirm password</label>
+                            <input type="password" placeholder="Confirm password" id="sign-up" name="confirm_password">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit">Try It Now</button>
+                            <span class="d-block mt-15">Already have an account? <a href="{% url 'signin_view' %}">Sign In</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="sponsor-slider-wrapper cl-white text-center mt-40">
+                <div class="sponsor-slider-4 owl-theme owl-carousel">
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor1.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor2.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor3.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor4.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor5.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor6.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor7.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor1.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor2.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor3.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor4.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor5.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor6.png' %}" alt="sponsor">
+                    </div>
+                    <div class="sponsor-thumb">
+                        <img src="{% static 'apps/assets/images/sponsor/sponsor7.png' %}" alt="sponsor">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
