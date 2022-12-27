@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-w@a#p%i_j)5e9-r0cn7%kd7+!7l5he24$wi3ofjazw_bmmv@23'
@@ -89,3 +92,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'apps.User'
 LOGIN_REDIRECT_URL = '/'
+
+sentry_sdk.init(
+    dsn="https://530611b6b19c43b19ec42df434914616@o4504360893808640.ingest.sentry.io/4504378029572096",
+    integrations=[
+        DjangoIntegration(),
+    ],
+
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
